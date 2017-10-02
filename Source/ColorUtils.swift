@@ -41,9 +41,9 @@ func hsv2rgb(_ hsv: HSV) -> RGB {
         default: r = hsv.brightness; g = t; b = p;
     }
     
-    rgb.red = r
-    rgb.green = g
-    rgb.blue = b
+    rgb.red = abs(r)
+    rgb.green = abs(g)
+    rgb.blue = abs(b)
     rgb.alpha = hsv.alpha
     return rgb
 }

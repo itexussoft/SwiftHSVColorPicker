@@ -81,7 +81,8 @@ open class SwiftHSVColorPicker: UIView, ColorWheelDelegate, BrightnessViewDelega
     func hueAndSaturationSelected(_ hue: CGFloat, saturation: CGFloat) {
         self.hue = hue
         self.saturation = saturation
-        self.color = UIColor(hue: self.hue, saturation: self.saturation, brightness: self.brightness, alpha: 1.0)
+        let rgb = hsv2rgb((self.hue, self.saturation,  self.brightness, 1.0))
+        self.color = UIColor(red: rgb.red, green: rgb.green, blue: rgb.blue, alpha: rgb.alpha)
         delegate?.colorDidChanged(color: color)
         brightnessView.setViewColor(self.color)
 //        selectedColorView.setViewColor(self.color)
@@ -89,7 +90,8 @@ open class SwiftHSVColorPicker: UIView, ColorWheelDelegate, BrightnessViewDelega
     
     func brightnessSelected(_ brightness: CGFloat) {
         self.brightness = brightness
-        self.color = UIColor(hue: self.hue, saturation: self.saturation, brightness: self.brightness, alpha: 1.0)
+        let rgb = hsv2rgb((self.hue, self.saturation,  self.brightness, 1.0))
+        self.color = UIColor(red: rgb.red, green: rgb.green, blue: rgb.blue, alpha: rgb.alpha)
         delegate?.colorDidChanged(color: color)
         colorWheel.setViewBrightness(brightness)
 //        selectedColorView.setViewColor(self.color)
